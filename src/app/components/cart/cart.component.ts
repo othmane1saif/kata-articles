@@ -29,6 +29,7 @@ export class CartComponent implements OnInit {
   removeArticleFromCart(id: number) {
     this.cartArticles = this.cartArticles.filter(cartEle => cartEle.article.id != id);
     localStorage.setItem('cart', JSON.stringify(this.cartArticles));
+    this.localStorageService.getCartSubject().next(this.cartArticles);
   }
 
   /**
