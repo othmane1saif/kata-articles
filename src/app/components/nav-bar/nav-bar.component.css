@@ -1,0 +1,30 @@
+.nav-bar ol {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.nav-bar ol {
+  list-style-type: none;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+
+}
+
+.home {
+  background-color: #ffd2ad;
+  padding: 5px 7px;
+}
+
+.cart {
+  border: #679dff solid 1px;
+  padding: 4px 6px;
+}
+
+.cart a{
+  color: #679dff;
+}

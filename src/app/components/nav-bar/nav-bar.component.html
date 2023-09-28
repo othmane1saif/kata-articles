@@ -1,0 +1,6 @@
+<nav class="nav-bar">
+  <ol>
+    <li class="home"><a [routerLink]="['/']">Accueil</a></li>
+    <li class="cart"><a [routerLink]="['/cart']">Panier: {{cartArticles != null ? cartArticles.length : 0}}</a></li>
+  </ol>
+</nav>

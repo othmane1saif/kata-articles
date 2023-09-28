@@ -1,0 +1,39 @@
+<div class="cart-container">
+    <div class="element-holder" *ngFor="let articleCart of cartArticles">
+      <div class="cart-element">
+        <p>
+          {{articleCart.article.productName}}
+        </p>
+        <p>
+          Qte: {{articleCart.quantity}}
+        </p>
+        <p>
+          Taxes: {{articleCart.article.price | taxe:getCategory(articleCart.article.category):articleCart.article.isImported
+          | arrondi:20 | number:'1.2-2'}}
+        </p>
+        <p>
+          Prix unitaire HT {{articleCart.article.price}} &#x20AC;
+        </p>
+        <p>
+          Prix unitaire TTC {{((articleCart.article.price | taxe:getCategory(articleCart.article.category):articleCart.article.isImported
+          | arrondi:20) + articleCart.article.price) | number:'1.2-2'}} &#x20AC;
+        </p>
+      </div>
+      <div class="action-container">
+        <span (click)="removeArticleFromCart(articleCart.article.id)">
+          <img alt="delete icon" title="supprimer article" class="icon-minus-circle" src="./assets/icons/noun-minus-circle.svg">
+        </span>
+      </div>
+  </div>
+
+  <div class="total-container">
+    <div>
+      <div class="cart-element">
+        <p>Total Taxes: {{getTotalTaxes() | number:'1.2-2'}}&#x20AC;</p>
+      </div>
+      <div class="cart-element">
+        <p>Total TTC: {{getTotalHorsTaxes() | arrondi: 20 | number:'1.2-2'}}&#x20AC;</p>
+      </div>
+    </div>
+  </div>
+</div>

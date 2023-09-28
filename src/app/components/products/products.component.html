@@ -1,0 +1,6 @@
+<div class="articles-container">
+  <div class="article-container" *ngFor="let article of articles">
+    <app-card [article]="article" [cartArticles]="cartArticles" (addToCart)="addToCart($event)"></app-card>
+  </div>
+</div>
+

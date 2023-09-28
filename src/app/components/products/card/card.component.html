@@ -1,0 +1,21 @@
+<div class="card-container">
+  <div class="product-info">
+    <h4>{{article.productName}}</h4>
+    <p>catégorie: {{article.category}}</p>
+    <p>Prix: {{((article.price | taxe:article.category:article.isImported) + article.price)
+      | arrondi:20 | number:'1.2-2'}} &#x20AC;</p>
+  </div>
+
+  <div class="action-container">
+    <div *ngIf="article.quantity > 0 && getQuantity(article).length > 0; then selectMenu else nonDisponible"></div>
+    <ng-template #selectMenu><div class="custom-select">
+      <select title="quantité" [(ngModel)]="quantity">
+        <option *ngFor="let curseur of getQuantity(article); let i = index"
+                [value]="i + 1" [selected]="i == 0">Qte: {{i + 1}}</option>
+      </select>
+    </div></ng-template>
+    <ng-template #nonDisponible><p class="out-of-stock-title">Non disponible</p></ng-template>
+    <button title="ajouter article" class="add-button" [disabled]="article.quantity == 0 || getQuantity(article).length == 0"
+            (click)="addArticleToCart(article)">Ajouter</button>
+  </div>
+</div>
