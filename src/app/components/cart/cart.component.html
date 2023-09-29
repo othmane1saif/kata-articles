@@ -1,4 +1,7 @@
-<div class="cart-container">
+<div  *ngIf="cartArticles.length > 0; then cart else emptyCart">
+</div>
+<ng-template #cart>
+  <div class="cart-container">
     <div class="element-holder" *ngFor="let articleCart of cartArticles">
       <div class="cart-element">
         <p>
@@ -24,16 +27,23 @@
           <img alt="delete icon" title="supprimer article" class="icon-minus-circle" src="./assets/icons/noun-minus-circle.svg">
         </span>
       </div>
-  </div>
+    </div>
 
-  <div class="total-container">
-    <div>
-      <div class="cart-element">
-        <p>Total Taxes: {{getTotalTaxes() | number:'1.2-2'}}&#x20AC;</p>
-      </div>
-      <div class="cart-element">
-        <p>Total TTC: {{getTotalHorsTaxes() | arrondi: 20 | number:'1.2-2'}}&#x20AC;</p>
+    <div class="total-container">
+      <div>
+        <div class="cart-element">
+          <p>Total Taxes: {{getTotalTaxes() | number:'1.2-2'}}&#x20AC;</p>
+        </div>
+        <div class="cart-element">
+          <p>Total TTC: {{getTotalHorsTaxes() | arrondi: 20 | number:'1.2-2'}}&#x20AC;</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</ng-template>
+
+<ng-template #emptyCart>
+  <div class="cart-container">
+    <p>Panier vide</p>
+  </div>
+</ng-template>
